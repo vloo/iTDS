@@ -1,0 +1,34 @@
+info:
+tato knihovna je fork toho co se da najit zde: https://sourceforge.net/projects/jtds/files/jtds/1.3.1/
++ palikovane tyto patche (pripadne nejake dalsi)
+https://sourceforge.net/p/jtds/bugs/703/
+https://sourceforge.net/p/jtds/bugs/725/
+
+jak releasovat:
+1) releasujem na dev masine - melo by to nastavat maximalne 2x za deset let
+2) ujistit se ze mate apache ant
+3) pustit ant clean
+4) pustit ant dist
+5) najit zkompilovane jarko v c:\hg\jtds-gmc\dist\jtds-1.3.1-dist.zip\jtds-1.3.1.jar a odkopirovat si ho
+6) prejmenovat na jtds-gmc-1.3.1.X-gmc.jar
+    - kde jtds-gmc znamena ze to je gmc patched jtds
+    - 1.3.1 ze vychazime z verze 1.3.1
+    - X je cislo 1 2 3 4 5 tohle cislo postupne zvetsujeme
+    - gmc je maven qualifier
+7) uploadovat do artifactory a ma to vypadat takhle
+    <dependency>
+        <groupId>net.sourceforge.jtds</groupId>
+        <artifactId>jtds-gmc</artifactId>
+        <version>1.3.1.3</version>
+        <type>pom</type>
+    </dependency>
+
+8) v aplikaci v pom.xml to bude vypadat takhle
+    <dependency>
+        <groupId>net.sourceforge.jtds</groupId>
+        <artifactId>jtds-gmc</artifactId>
+        <version>1.3.1.3</version>
+        <classifier>gmc</classifier>
+    </dependency>
+
+
